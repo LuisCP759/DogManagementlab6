@@ -1,5 +1,5 @@
 /*--------------------------------------------
-Program 5: MPLS Dog Management System
+Program 6: MPLS Dog Management System
 	
     [REPLACE MY INFORMATION WITH YOURS]
     Course: COMP 170, Spring I 2023
@@ -172,10 +172,10 @@ public class DogManagementlab6 { // class that contains your program
         System.out.println("Displaying ID of choosing");
         System.out.println("ID: " + dogs.get(index).getdogID());
         System.out.println("Name: " + dogs.get(index).getDogname());
-        System.out.println("Age: " + dogs.get(index).getdogage());
-        System.out.println("Weight: " + dogs.get(index).getdogweight());
-        System.out.println("Owner Name: " + dogs.get(index).getownername());
-        System.out.println("Breed: " + dogs.get(index).getdogbreed());
+        System.out.println("Age: " + dogs.get(index).getDogage());
+        System.out.println("Weight: " + dogs.get(index).getDogweight());
+        System.out.println("Owner Name: " + dogs.get(index).getOwnername());
+        System.out.println("Breed: " + dogs.get(index).getDogbreed());
         
 
     }
@@ -207,11 +207,7 @@ public class DogManagementlab6 { // class that contains your program
 
         System.out.println();
         System.out.println("Dog record updated"); // show updated record information folowing the index 
-        System.out.println("dogs.get(index)");
-        System.out.println("ID:" + dogs.get(index).getdogID());
-        System.out.println("Name:" + dogs.get(index).getDogname());
-        System.out.println("Age:" + dogs.get(index).getdogage());
-        System.out.println("Weight:" + dogs.get(index).getdogweight());
+        System.out.println(dogs.get(index));
     }
 
     public static void exitprogram() {
@@ -219,10 +215,10 @@ public class DogManagementlab6 { // class that contains your program
     }
 
     public static void displaydogages() {
-        if (dogcount == 0) { // will verify record of dogs 
+        if (dogs.size() == 0) { // will verify record of dogs 
             System.out.println("no dog record to display");
         }
-        displayDogage(0); // Start recursion with the first dog at index 0
+        return; // Start recursion with the first dog at index 0
     }
 
     private static void displayDogage(int index) {
@@ -230,10 +226,10 @@ public class DogManagementlab6 { // class that contains your program
             return;
         }
 
-        int ageinhumans = dogs.get(index).getdogage() * 15; // variable that will multiply dog years by 15 
+        int ageinhumans = dogs.get(index).getDogage() * 15; // variable that will multiply dog years by 15 
         System.out.println("Displaying dogs age in human years");
-        System.out.println("Name:" + dogname[index]);
-        System.out.println("Age:" + dogage[index]);
+        System.out.println("Name:" + dogs.get(index).getDogname());
+        System.out.println("Age:" + dogs.get(index).getDogage());
         System.out.println("Age in human years:" + ageinhumans); // Display this dog's age converted to human years, then recursively process the next dog.
 
         //allow to display the next dog
