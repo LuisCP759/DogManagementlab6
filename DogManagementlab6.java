@@ -20,8 +20,13 @@ public class DogManagementlab6 { // class that contains your program
     //The class-level arrays are the storage: they keep those details after the method finishes, 
     //so the get and update methods can use them later.
     
-   Dog newDog = new Dog(0, "", 0.0, 0, "", "");
-   
+ //Dog = the name of our ArrayList
+
+    private static final int max_dogs = 12;
+    //This ArrayList is only supposed to hold Dog objects
+    // new arrayList<Dog>() actually creates the empty ArrayList
+    static ArrayList<Dog> dogs = new ArrayList<Dog>();
+
     static Scanner scn = new Scanner(System.in);
 
     public static void main(String[] args) throws Exception {  // main nothing here yet
@@ -91,7 +96,7 @@ public class DogManagementlab6 { // class that contains your program
     public static void Attendantrecording() { // first creationg of the record for each array 
         System.out.println("Please filled out form:");  // usec just needs to go in and filled out dog ID information 
 
-        if (dogcount >= Max_Dogs) { // keep track of the amount of dogs we want to add 
+        if (dogs.size() >= Max_Dogs) { // keep track of the amount of dogs we want to add 
             System.out.println("Dog record storage is full");   // were making sure we have space in storage to keep adding dog information 
         } else { // else will always run as logn as memory is never full 
             System.out.print("Enter dog ID:");
@@ -106,33 +111,41 @@ public class DogManagementlab6 { // class that contains your program
             System.out.print("Enter dog weight:");
             Double enterdogweight = Double.parseDouble(scn.nextLine());
 
-            // we need to indentify the index of each input to get the right array when user comes back to get information
-            dogID[dogcount] = entereddogID; // this is adding to the array each time we make a record 
-            dogname[dogcount] = enterdogname;
-            dogweight[dogcount] = enterdogweight;
-            dogage[dogcount] = enterdogage;
+            System.out.print("Enter dog breed:");
+            String enterdogbreed = scn.nextLine();
 
-            dogcount++;
-            System.out.println("Dog record has been added, Total dogs stored:" + dogcount);
+            System.out.print("Enter dog owner name:");
+            String enterdogowner = scn.nextLine();
+
+            // we need to indentify the index of each input to get the right array when user comes back to get information
+            Dog newDog = new Dog(
+                entereddogID, 
+                enterdogname, 
+                enterdogweight, 
+                enterdogage, 
+                enterdogbreed, 
+                enterdogowner
+            );
+            dogs.add(newDog);
+
+            System.out.println("Dog record has been added, Total dogs stored:" + dogs.size());
             System.out.println();
 
             System.out.println("Displaying Dog Record");
-            int newdogindex = dogcount - 1; //lazy way to keep track of the dog index without having to loop or create if statemnts 
-            System.out.println("ID: " + dogID[newdogindex]); // everytime we decreate a dog coutn is technically the same amount as the index so it keeps track 
-            System.out.println("Name: " + dogname[newdogindex]);
-            System.out.println("Age: " + dogage[newdogindex]);
-            System.out.println("Weight: " + dogweight[newdogindex]);
-
+            System.out.println(newDog);
+            
         }
     }
 
     public static int finddogrecord() { // this will search for the index of the ID before we go into updating or displaying the info 
         System.out.print("Enter dog ID:"); // enter dog ID to find 
         int idtofind = Integer.parseInt(scn.nextLine());//idtofind is the id user use to find loop will go thur the list to find it 
-        for (int index = 0; index < dogcount; index++) {
-            if (dogID[index] == idtofind) {
+        for (int index = 0; index < dogs.size(); index++) {
+            if (dogs.get(index).getdogID() == idtofind) {
                 return index;
-
+                // dogs = the ArrayList
+                //.get(index) get one Dog object
+                // getdogID() .get that Dog object's ID 
             }
 
         }
@@ -141,13 +154,13 @@ public class DogManagementlab6 { // class that contains your program
 
     public static void getrecord() { // this will run for option 2 when user wants to display data 
 
-        if (dogcount == 0) {
+        if (dogs.size() == 0) {
             System.out.println("No dog ID visible");
             return;
         } //now user will be able to see the informaiton of the dog 
         System.out.println("Available dog IDs");
-        for (int ID = 0; ID < dogcount; ID++) {
-            System.out.println("Dog ID:" + dogID[ID]); // focus on only getting dog IDS list 
+        for (int ID = 0; ID < dogs.size(); ID++) {
+            System.out.println("Dog ID:" + dogs.get(ID).getdogID()); // focus on only getting dog IDS list 
             System.out.println();
         }//finddogrecord() asks the user for an ID and returns its array index.
         int index = finddogrecord();
@@ -157,10 +170,13 @@ public class DogManagementlab6 { // class that contains your program
         }
         System.out.println();
         System.out.println("Displaying ID of choosing");
-        System.out.println("ID: " + dogID[index]);
-        System.out.println("Name: " + dogname[index]);
-        System.out.println("Age: " + dogage[index]);
-        System.out.println("Weight: " + dogweight[index]);
+        System.out.println("ID: " + dogs.get(index).getdogID());
+        System.out.println("Name: " + dogs.get(index).getdogname());
+        System.out.println("Age: " + dogs.get(index).getdogage());
+        System.out.println("Weight: " + dogs.get(index).getdogweight());
+        System.out.println("Owner Name: " + dogs.get(index).getownername());
+        System.out.println("Breed: " + dogs.get(index).getbreedname());
+        
 
     }
 
@@ -172,23 +188,23 @@ public class DogManagementlab6 { // class that contains your program
 
         }
         System.out.print("New dog ID:");
-        dogID[index] = Integer.parseInt(scn.nextLine()); // store and update the information when ask to update the ID and record 
+        dogs.get(index).setdogID(Integer.parseInt(scn.nextLine())); // store and update the information when ask to update the ID and record 
 
         System.out.print("Name:");
-        dogname[index] = scn.nextLine(); // this variable[index] will make sure to grab the correct array location 
+        dogs.get(index).setdogname(scn.nextLine()); // this variable[index] will make sure to grab the correct array location 
 
         System.out.print("Age:");
-        dogage[index] = Integer.parseInt(scn.nextLine());
+        dogs.get(index).setdogage(Integer.parseInt(scn.nextLine()));
 
         System.out.print("Weight");
-        dogweight[index] = Double.parseDouble(scn.nextLine());
+        dogs.get(index).setdogweight(Double.parseDouble(scn.nextLine()));
 
         System.out.println();
         System.out.println("Dog record updated"); // show updated record information folowing the index 
-        System.out.println("ID:" + dogID[index]);
-        System.out.println("Name:" + dogname[index]);
-        System.out.println("Age:" + dogage[index]);
-        System.out.println("Weight:" + dogweight[index]);
+        System.out.println("ID:" + dogs.get(index).getdogID());
+        System.out.println("Name:" + dogs.get(index).getdogname());
+        System.out.println("Age:" + dogs.get(index).getdogage());
+        System.out.println("Weight:" + dogs.get(index).getdogweight());
     }
 
     public static void exitprogram() {

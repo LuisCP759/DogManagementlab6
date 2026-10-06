@@ -53,9 +53,6 @@
         return ownername;
     }
 
-    public String getdogowner(){
-        return ownername;
-    }
 
     // setters
     public void setdogID(int dogID) {
@@ -85,7 +82,7 @@
     // toString()
     @Override
     public String toString() {
-        return "Dogs{" +
+        return "Dog{" +
                 "dogID=" + dogID +
                 ", dogname='" + dogname + '\'' +
                 ", dogweight=" + dogweight +
@@ -95,4 +92,4 @@
                 '}';
     }
 
-}; 
+}
