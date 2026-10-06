@@ -171,11 +171,11 @@ public class DogManagementlab6 { // class that contains your program
         System.out.println();
         System.out.println("Displaying ID of choosing");
         System.out.println("ID: " + dogs.get(index).getdogID());
-        System.out.println("Name: " + dogs.get(index).getdogname());
+        System.out.println("Name: " + dogs.get(index).getDogname());
         System.out.println("Age: " + dogs.get(index).getdogage());
         System.out.println("Weight: " + dogs.get(index).getdogweight());
         System.out.println("Owner Name: " + dogs.get(index).getownername());
-        System.out.println("Breed: " + dogs.get(index).getbreedname());
+        System.out.println("Breed: " + dogs.get(index).getdogbreed());
         
 
     }
@@ -199,10 +199,17 @@ public class DogManagementlab6 { // class that contains your program
         System.out.print("Weight");
         dogs.get(index).setdogweight(Double.parseDouble(scn.nextLine()));
 
+        System.out.print("Breed:");
+        dogs.get(index).setdogbreed(scn.nextLine());
+
+        System.out.print("Owner Name:");
+        dogs.get(index).setownername(scn.nextLine());
+
         System.out.println();
         System.out.println("Dog record updated"); // show updated record information folowing the index 
+        System.out.println("dogs.get(index)");
         System.out.println("ID:" + dogs.get(index).getdogID());
-        System.out.println("Name:" + dogs.get(index).getdogname());
+        System.out.println("Name:" + dogs.get(index).getDogname());
         System.out.println("Age:" + dogs.get(index).getdogage());
         System.out.println("Weight:" + dogs.get(index).getdogweight());
     }
@@ -219,11 +226,11 @@ public class DogManagementlab6 { // class that contains your program
     }
 
     private static void displayDogage(int index) {
-        if (index >= dogcount) { // stop recursion after all stored dogs have been displayed
+        if (index >= dogs.size()) { // stop recursion after all stored dogs have been displayed
             return;
         }
 
-        int ageinhumans = dogage[index] * 15; // variable that will multiply dog years by 15 
+        int ageinhumans = dogs.get(index).getdogage() * 15; // variable that will multiply dog years by 15 
         System.out.println("Displaying dogs age in human years");
         System.out.println("Name:" + dogname[index]);
         System.out.println("Age:" + dogage[index]);
