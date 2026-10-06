@@ -8,6 +8,7 @@ Program 5: MPLS Dog Management System
  */
 
 import java.util.Scanner; //Importing Scanner Class
+import java.util.ArrayList;
 
 public class DogManagementlab6 { // class that contains your program 
 
@@ -18,14 +19,9 @@ public class DogManagementlab6 { // class that contains your program
     // we need to have variables where we will stored the dogs information when user input is given 
     //The class-level arrays are the storage: they keep those details after the method finishes, 
     //so the get and update methods can use them later.
-    private static final int Max_Dogs = 12;
-
-    static int[] dogID = new int[Max_Dogs];
-    static String[] dogname = new String[Max_Dogs];
-    static Double[] dogweight = new Double[Max_Dogs];
-    static int[] dogage = new int[Max_Dogs];
-    static int dogcount = 0;
-
+    
+   Dog newDog = new Dog(0, "", 0.0, 0, "", "");
+   
     static Scanner scn = new Scanner(System.in);
 
     public static void main(String[] args) throws Exception {  // main nothing here yet
