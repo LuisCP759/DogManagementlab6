@@ -8,8 +8,18 @@
     private String ownername; 
 
 
+    // default constructior 
+    public Dog() {
+        dogID = 0;
+        dogname = "";
+        dogweight = 0.0;
+        dogage = 0;
+        dogbreed = "";
+        ownername = "";
+    }
+
     // constructor 
-    private Dog(int dogID, String dogname, double dogweight, int dogage, String dogbreed, String ownername) {
+    public Dog(int dogID, String dogname, double dogweight, int dogage, String dogbreed, String ownername) {
         this.dogID = dogID;
         this.dogname = dogname;
         this.dogweight = dogweight;
@@ -19,56 +29,56 @@
     }
 
     //getter 
-    private int getdogID(){
+    public int getdogID(){
         return dogID;
     }
 
-    private String getDogname(){
+    public String getDogname(){
         return dogname;
     }
 
-    private Double getdogweight(){
+    public Double getdogweight(){
         return dogweight;
     }
 
-    private int getdogage(){
+    public int getdogage(){
         return dogage;
     }
 
-    private String getdogbreed(){
+    public String getdogbreed(){
         return dogbreed;
     }
 
-    private String getownername(){
+    public String getownername(){
         return ownername;
     }
 
-    private String getdogowner(){
+    public String getdogowner(){
         return ownername;
     }
 
     // setters
-    private void setdogID(int dogID) {
+    public void setdogID(int dogID) {
         this.dogID = dogID;
     }
 
-    private void setdogname(String dogname) {
+    public void setdogname(String dogname) {
         this.dogname = dogname;
     }
 
-    private void setdogweight(Double dogweight) {
+    public void setdogweight(Double dogweight) {
         this.dogweight = dogweight;
     }
 
-    private void setdogage(int dogage) {
+    public   void setdogage(int dogage) {
         this.dogage = dogage;
     }
 
-    private void setdogbreed(String dogbreed) {
+    public void setdogbreed(String dogbreed) {
         this.dogbreed = dogbreed;
     }
 
-    private void setownername(String ownername) {
+    public void setownername(String ownername) {
         this.ownername = ownername;
     }
 
