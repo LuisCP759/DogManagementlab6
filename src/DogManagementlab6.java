@@ -161,8 +161,16 @@ public class DogManagementlab6 { // Contains the dog-management program and its 
             System.out.println(); // Print a blank line to separate the output.
 
             System.out.println("Displaying Dog Record"); // Label the new record's details.
-            System.out.println(newDog); // Print the Dog object's text representation.
+            printDogDetails(newDog); // Print the dog's details on separate labeled lines.
         }
+    }
+
+    // Prints the main dog details in the same labeled format used in Lab 5.
+    private static void printDogDetails(Dog dog) {
+        System.out.println("ID: " + dog.getdogID());
+        System.out.println("Name: " + dog.getDogname());
+        System.out.println("Age: " + dog.getdogage());
+        System.out.println("Weight: " + dog.getdogweight());
     }
 
     // Asks for a dog ID and returns that dog's list position, or -1 if it is not found.
@@ -215,7 +223,7 @@ public class DogManagementlab6 { // Contains the dog-management program and its 
         }
         System.out.println(); // Separate the ID list from the selected record.
         System.out.println("Displaying ID of choosing"); // Label the details being displayed.
-        System.out.println(dogs.get(index)); // Use the object's formatted display method.
+        printDogDetails(dogs.get(index)); // Print the selected dog's details on separate labeled lines.
     }
 
     // Finds a dog by ID and asks the user to replace all of its stored details.
@@ -241,7 +249,7 @@ public class DogManagementlab6 { // Contains the dog-management program and its 
 
         System.out.println(); // Separate the prompts from the confirmation.
         System.out.println("Dog record updated"); // Confirm that the in-memory record was updated.
-        System.out.println(dogs.get(index)); // Print the updated Dog object.
+        printDogDetails(dogs.get(index)); // Print the updated details on separate labeled lines.
     }
 
     // Prints an exit message; the main menu currently exits directly in its case 5.
@@ -301,5 +309,4 @@ public class DogManagementlab6 { // Contains the dog-management program and its 
         }
     }
 }
-
 
