@@ -8,7 +8,8 @@
     private String ownername; 
 
 
-    // default constructior 
+    // default constructior
+    // do not have to be final  there just default value 
     public Dog() {
         dogID = 0;
         dogname = "";
