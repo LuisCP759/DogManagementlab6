@@ -1,12 +1,12 @@
- public class Dog {
- 
+
+public class Dog {
+
     private int dogID;
     private String dogname;
     private Double dogweight;
     private int dogage;
     private String dogbreed;
-    private String ownername; 
-
+    private String ownername;
 
     // default constructior
     // do not have to be final  there just default value 
@@ -30,30 +30,29 @@
     }
 
     //getter 
-    public int getdogID(){
+    public int getdogID() {
         return dogID;
     }
 
-    public String getDogname(){
+    public String getDogname() {
         return dogname;
     }
 
-    public Double getdogweight(){
+    public Double getdogweight() {
         return dogweight;
     }
 
-    public int getdogage(){
+    public int getdogage() {
         return dogage;
     }
 
-    public String getdogbreed(){
+    public String getdogbreed() {
         return dogbreed;
     }
 
-    public String getownername(){
+    public String getownername() {
         return ownername;
     }
-
 
     // setters
     public void setdogID(int dogID) {
@@ -68,7 +67,7 @@
         this.dogweight = dogweight;
     }
 
-    public   void setdogage(int dogage) {
+    public void setdogage(int dogage) {
         this.dogage = dogage;
     }
 
@@ -80,17 +79,15 @@
         this.ownername = ownername;
     }
 
-    // toString()
+    // Returns the dog's information in a readable, labeled format.
     @Override
     public String toString() {
-        return "Dog{" +
-                "dogID=" + dogID +
-                ", dogname='" + dogname + '\'' +
-                ", dogweight=" + dogweight +
-                ", dogage=" + dogage +
-                ", dogbreed='" + dogbreed + '\'' +
-                ", ownername='" + ownername + '\'' +
-                '}';
+        return "ID: " + dogID
+                + "\nName: " + dogname
+                + "\nAge: " + dogage
+                + "\nWeight: " + dogweight
+                + "\nBreed: " + dogbreed
+                + "\nOwner: " + ownername;
     }
 
 }

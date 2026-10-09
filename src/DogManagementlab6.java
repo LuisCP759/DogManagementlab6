@@ -5,7 +5,6 @@ import java.util.ArrayList; // Provides the growable list used to store dog obje
 import java.io.File; // Represents the CSV file that the program reads.
 import java.io.FileNotFoundException; // Lets the file-reading method handle a missing CSV file.
 
-
 public class DogManagementlab6 { // Contains the dog-management program and its methods.
 
     // Sets the maximum number of dog records this program keeps in its list.
@@ -76,12 +75,12 @@ public class DogManagementlab6 { // Contains the dog-management program and its 
                 }
                 try {
                     Dog dog = new Dog( // Create a Dog using the values from this CSV row.
-                        Integer.parseInt(fields[0].trim()), // Convert the ID text to an integer.
-                        fields[1].trim(), // Use the second field as the dog's name.
-                        Double.parseDouble(fields[2].trim()), // Convert the weight text to a decimal.
-                        Integer.parseInt(fields[3].trim()), // Convert the age text to an integer.
-                        "", // The four-column CSV does not provide a breed.
-                        "" // The four-column CSV does not provide an owner.
+                            Integer.parseInt(fields[0].trim()), // Convert the ID text to an integer.
+                            fields[1].trim(), // Use the second field as the dog's name.
+                            Double.parseDouble(fields[2].trim()), // Convert the weight text to a decimal.
+                            Integer.parseInt(fields[3].trim()), // Convert the age text to an integer.
+                            "", // The four-column CSV does not provide a breed.
+                            "" // The four-column CSV does not provide an owner.
                     );
                     dogs.add(dog); // Keep this dog object in the program's list.
                 } catch (NumberFormatException e) {
@@ -144,16 +143,19 @@ public class DogManagementlab6 { // Contains the dog-management program and its 
             System.out.print("Enter dog age:"); // Prompt for the dog's age.
             int enterdogage = readInteger(""); // Read and convert the age to an integer.
 
-            String enterdogbreed = ""; // Optional attribute not provided by the assignment CSV.
-            String enterdogowner = "";
+            System.out.print("Enter dog breed:"); // Optional attribute not provided by the assignment CSV.
+            String enterdogbreed = scn.nextLine();
+
+            System.out.print("Enter dog Onwer name:");
+            String enterdogowner = scn.nextLine();
 
             Dog newDog = new Dog( // Build one Dog object from the six values just collected.
-                entereddogID,
-                enterdogname,
-                enterdogweight,
-                enterdogage,
-                enterdogbreed,
-                enterdogowner
+                    entereddogID,
+                    enterdogname,
+                    enterdogweight,
+                    enterdogage,
+                    enterdogbreed,
+                    enterdogowner
             );
             dogs.add(newDog); // Add the new dog to the shared list.
 
@@ -165,12 +167,9 @@ public class DogManagementlab6 { // Contains the dog-management program and its 
         }
     }
 
-    // Prints the main dog details in the same labeled format used in Lab 5.
+    // Prints the dog's readable text representation.
     private static void printDogDetails(Dog dog) {
-        System.out.println("ID: " + dog.getdogID());
-        System.out.println("Name: " + dog.getDogname());
-        System.out.println("Age: " + dog.getdogage());
-        System.out.println("Weight: " + dog.getdogweight());
+        System.out.println(dog.toString());
     }
 
     // Asks for a dog ID and returns that dog's list position, or -1 if it is not found.
@@ -245,10 +244,15 @@ public class DogManagementlab6 { // Contains the dog-management program and its 
         System.out.print("Age:"); // Ask for the replacement age.
         dogs.get(index).setdogage(readInteger("")); // Convert the input and save the new age.
 
+        System.out.print("Dog breed:");
+        dogs.get(index).setdogbreed(scn.nextLine()); // Save the new breed in the selected Dog.
 
+        System.out.print("Dog owner name:");
+        dogs.get(index).setownername(scn.nextLine()); // Save the new owner name in the selected Dog.
 
         System.out.println(); // Separate the prompts from the confirmation.
         System.out.println("Dog record updated"); // Confirm that the in-memory record was updated.
+
         printDogDetails(dogs.get(index)); // Print the updated details on separate labeled lines.
     }
 
@@ -279,6 +283,7 @@ public class DogManagementlab6 { // Contains the dog-management program and its 
 
         displayDogage(index + 1); // Call this method for the next dog in the list.
     }
+
     // Retry invalid numeric input instead of terminating the program.
     private static int readInteger(String prompt) {
         while (true) {
@@ -309,4 +314,3 @@ public class DogManagementlab6 { // Contains the dog-management program and its 
         }
     }
 }
-
